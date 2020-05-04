@@ -19,12 +19,19 @@ const GlobalStyle = createGlobalStyle`
     background-color: #fafafa;
     min-height: 100%;
     min-width: 100%;
+    height: 100%;
   }
 
   p,
   label {
     font-family: Georgia, Times, 'Times New Roman', serif;
     line-height: 1.5em;
+  }
+
+  /* Sign Up Form */
+  div.MuiFormControl-root.MuiTextField-root, 
+  h3.MuiTypography-root.MuiTypography-h5 {
+    margin-bottom: 1em;
   }
 `;
 
