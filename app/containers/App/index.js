@@ -12,7 +12,7 @@ import { Switch, Route } from 'react-router-dom';
 import Box from '@material-ui/core/Box';
 
 import HomePage from 'containers/HomePage/Loadable';
-import SignUpPage from 'containers/SignUp/Loadable';
+import SignUpPage from 'containers/SignUpPage/Loadable';
 import NotFoundPage from 'containers/NotFoundPage/Loadable';
 
 import GlobalStyle from '../../global-styles';
