@@ -1,8 +1,8 @@
 export const initialValues = {
-    name: '',
-    surname: '',
-    username: '',
-    email: '',
-    password: '',
-    repeatPassword: ''
-}
+  name: '',
+  surname: '',
+  username: '',
+  email: '',
+  password: '',
+  repeatPassword: '',
+};

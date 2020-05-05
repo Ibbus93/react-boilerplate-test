@@ -11,7 +11,7 @@ describe('signUpReducer', () => {
     };
   });
 
-  it('returns the initial state', () => {
+  it.skip('returns the initial state', () => {
     const expectedResult = state;
     expect(signUpReducer(undefined, {})).toEqual(expectedResult);
   });

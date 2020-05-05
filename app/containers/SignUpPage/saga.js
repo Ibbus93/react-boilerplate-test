@@ -1,17 +1,11 @@
-import { take, call, put, select, takeLatest } from 'redux-saga/effects';
+import { call, put, takeLatest } from 'redux-saga/effects';
 
 import { registerUser } from 'api';
 import { signUpResponse, signUpError } from './actions';
 import { SIGN_UP_REQUEST } from './constants';
 
-export function* requestSignUp({ 
-  user: {
-    name,
-    surname,
-    username,
-    email,
-    password
-  } 
+export function* requestSignUp({
+  user: { name, surname, username, email, password },
 }) {
   try {
     const userPost = { name, surname, username, email, password };
@@ -21,7 +15,7 @@ export function* requestSignUp({
 
     yield put(signUpResponse(result));
   } catch (error) {
-    console.error(error);
+    // console.error(error);
     yield put(signUpError(error));
   }
 }

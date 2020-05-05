@@ -1,15 +1,68 @@
 /**
- * Test sagas
+ * How to test Sagas
+ * Read more on: https://redux-saga.js.org/docs/advanced/Testing.html
  */
 
 /* eslint-disable redux-saga/yield-effects */
-// import { take, call, put, select } from 'redux-saga/effects';
-// import signUpSaga from '../saga';
+import { runSaga } from 'redux-saga';
 
-// const generator = signUpSaga();
+import * as api from 'api';
 
-describe('signUpSaga Saga', () => {
-  it('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+import { signUpResponse, signUpError } from '../actions';
+import { requestSignUp } from '../saga';
+
+describe('SignUp Saga', () => {
+  const response = {
+    data: {
+      name: 'Gino',
+      surname: 'Bartali',
+      email: 'gino@bartali.it',
+      username: 'bartali',
+    },
+  };
+  const requestData = { user: { ...response.data, password: 'fake' } };
+
+  const error = 'fake error';
+
+  it('should call api and dispatch success action', async () => {
+    const registerUser = jest
+      .spyOn(api, 'registerUser')
+      .mockImplementation(() =>
+        Promise.resolve({
+          json: () => response,
+        }),
+      );
+
+    const dispatched = [];
+    await runSaga(
+      {
+        dispatch: action => dispatched.push(action),
+      },
+      requestSignUp,
+      requestData,
+    );
+
+    expect(registerUser).toHaveBeenCalledTimes(1);
+    expect(dispatched).toEqual([signUpResponse(response)]);
+    registerUser.mockClear();
+  });
+
+  it('should call api and dispatch error action', async () => {
+    const registerUser = jest
+      .spyOn(api, 'registerUser')
+      .mockImplementation(() => Promise.reject(error));
+
+    const dispatched = [];
+
+    await runSaga(
+      {
+        dispatch: action => dispatched.push(action),
+      },
+      requestSignUp,
+      requestData,
+    );
+
+    expect(registerUser).toHaveBeenCalledTimes(1);
+    expect(dispatched).toEqual([signUpError(error)]);
   });
 });

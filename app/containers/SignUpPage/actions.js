@@ -16,13 +16,13 @@ export function signUpRequest(user) {
 export function signUpResponse(response) {
   return {
     type: SIGN_UP_SUCCESS,
-    response
-  }
+    response,
+  };
 }
 
 export function signUpError(error) {
   return {
     type: SIGN_UP_ERROR,
-    error
-  }
+    error,
+  };
 }

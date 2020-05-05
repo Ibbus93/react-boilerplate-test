@@ -10,11 +10,12 @@ export const initialState = {
   loading: false,
   isError: false,
   response: null,
-  error: null
+  error: null,
 };
 
+/* eslint-disable default-case, no-param-reassign */
 const signUpReducer = (state = initialState, action) =>
-  produce(state, (draft) => {
+  produce(state, draft => {
     switch (action.type) {
       case SIGN_UP_REQUEST:
         draft.loading = true;
