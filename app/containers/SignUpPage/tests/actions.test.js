@@ -9,18 +9,9 @@
 
 import { signUpRequest, signUpResponse, signUpError } from '../actions';
 import { SIGN_UP_REQUEST, SIGN_UP_SUCCESS, SIGN_UP_ERROR } from '../constants';
+import { user, response } from './mocks';
 
 describe('SignUp actions', () => {
-  const user = {
-    name: 'Name',
-    surname: 'Surname',
-    username: 'username',
-    email: 'test@email.com',
-    password: 'password',
-  };
-
-  const response = { message: 'a response' };
-
   it('Should create an action to register the user', () => {
     const expected = {
       type: SIGN_UP_REQUEST,

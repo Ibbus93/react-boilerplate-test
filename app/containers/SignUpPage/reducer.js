@@ -19,7 +19,7 @@ const signUpReducer = (state = initialState, action) =>
     switch (action.type) {
       case SIGN_UP_REQUEST:
         draft.loading = true;
-        draft.error = false;
+        draft.isError = false;
         break;
       case SIGN_UP_SUCCESS:
         draft.loading = false;

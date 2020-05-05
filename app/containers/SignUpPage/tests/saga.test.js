@@ -1,6 +1,10 @@
 /**
  * How to test Sagas
  * Read more on: https://redux-saga.js.org/docs/advanced/Testing.html
+ *
+ * Testing a Saga middleware is being done mocking the API call
+ * It is even possible to test each yield, see this article for more info:
+ * https://medium.com/@13gaurab/unit-testing-sagas-with-jest-29a8bcfca028
  */
 
 /* eslint-disable redux-saga/yield-effects */
@@ -10,20 +14,9 @@ import * as api from 'api';
 
 import { signUpResponse, signUpError } from '../actions';
 import { requestSignUp } from '../saga';
+import { response, requestData, error } from './mocks';
 
 describe('SignUp Saga', () => {
-  const response = {
-    data: {
-      name: 'Gino',
-      surname: 'Bartali',
-      email: 'gino@bartali.it',
-      username: 'bartali',
-    },
-  };
-  const requestData = { user: { ...response.data, password: 'fake' } };
-
-  const error = 'fake error';
-
   it('should call api and dispatch success action', async () => {
     const registerUser = jest
       .spyOn(api, 'registerUser')

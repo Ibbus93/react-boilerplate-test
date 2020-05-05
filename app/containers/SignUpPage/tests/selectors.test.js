@@ -1,7 +1,10 @@
-// import { selectSignUpDomain } from '../selectors';
+import { selectSignUpDomain } from '../selectors';
+import { defaultState } from './mocks';
 
-describe('selectSignUpDomain', () => {
-  it.skip('Expect to have unit tests specified', () => {
-    expect(true).toEqual(false);
+describe('SignUp selector', () => {
+  it('Expect to return the initial state', () => {
+    const result = selectSignUpDomain(defaultState);
+
+    expect(result).toEqual(defaultState);
   });
 });

@@ -4,7 +4,7 @@
  *
  */
 
-import React, { memo } from 'react';
+import React, { memo, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { createStructuredSelector } from 'reselect';
@@ -24,9 +24,13 @@ import { signUpRequest } from './actions';
 import reducer from './reducer';
 import saga from './saga';
 
-export function SignUp({ registerUser }) {
+export function SignUp({ registerUser, response }) {
   useInjectReducer({ key: 'signUp', reducer });
   useInjectSaga({ key: 'signUp', saga });
+
+  console.log(response);
+
+  useEffect(() => {});
 
   return (
     <Box
@@ -68,10 +72,11 @@ export function SignUp({ registerUser }) {
 
 SignUp.propTypes = {
   registerUser: PropTypes.func.isRequired,
+  response: PropTypes.object,
 };
 
 const mapStateToProps = createStructuredSelector({
-  signUp: makeSelectSignUp(),
+  response: makeSelectSignUp(),
 });
 
 function mapDispatchToProps(dispatch) {
