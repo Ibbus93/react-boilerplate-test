@@ -3,7 +3,7 @@ export const user = {
   surname: 'Surname',
   username: 'username',
   email: 'test@email.com',
-  password: 'password',
+  password: 'password1',
 };
 
 export const response = {
@@ -24,4 +24,9 @@ export const defaultState = {
   isError: false,
   response: null,
   error: null,
+};
+
+export const validSchema = {
+  ...user,
+  repeatPassword: user.password,
 };
