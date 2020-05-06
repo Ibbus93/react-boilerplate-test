@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`signUpReducer should handle the signUpRequest action correctly 1`] = `
+Object {
+  "error": null,
+  "isError": false,
+  "loading": true,
+  "response": null,
+}
+`;
+
+exports[`signUpReducer should handle the signUpResponse action correctly 1`] = `
+Object {
+  "error": null,
+  "isError": false,
+  "loading": false,
+  "response": Object {
+    "data": Object {
+      "email": "gino@bartali.it",
+      "name": "Gino",
+      "surname": "Bartali",
+      "username": "bartali",
+    },
+  },
+}
+`;
